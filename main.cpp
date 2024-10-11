@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -28,6 +29,10 @@ public:
         name = n;
         color = c;
     }
+
+    int getAge() { return age; }
+    string getName() { return name; }
+    string getColor() { return color; }
 };
 
 class DoublyLinkedList {
@@ -107,7 +112,7 @@ public:
         if (!head) return; // Empty list
 
         Node* temp = head;
-        while (temp && temp->goat->name != na)
+        while (temp && !name.compare(temp->goat->getName()))
             temp = temp->next;
 
         if (!temp) return; // Value not found
@@ -131,7 +136,7 @@ public:
         Node* current = head;
         if (!current) return;
         while (current) {
-            cout << current->data << " ";
+            cout << current->goat->getName() << " (" << current->goat->getColor() << ", " << current->goat->getAge() << ")" << endl;
             current = current->next;
         }
         cout << endl;
@@ -141,7 +146,7 @@ public:
         Node* current = tail;
         if (!current) return;
         while (current) {
-            cout << current->data << " ";
+            cout << current->goat->getName() << " (" << current->goat->getColor() << ", " << current->goat->getAge() << ")" << endl;
             current = current->prev;
         }
         cout << endl;
@@ -158,11 +163,17 @@ public:
 
 // Driver program
 int main() {
+    srand(time(0));
+
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
     for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+    {
+        Goat temp();
+        list.push_back(temp);
+    }
+
     cout << "List forward: ";
     list.print();
 
