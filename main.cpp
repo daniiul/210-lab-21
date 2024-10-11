@@ -14,14 +14,14 @@ private:
     string names[15] = {"Kelsie", "Reagan", "Triston", "Raphael", "Noel", "Sullivan", "Imani",
         "Daniella", "Katrina", "Alexis", "Brenda", "Alberto", "Sasha", "Ally", "Journey"};
     string colors[15] = {"Snow", "Coral", "Bisque", "Moccasin", "Lavender", "Peru", "Azure", "Amethyst",
-        "Tan", "Dark Salmon", "Alice Blue", "Honeydew"};
+        "Tan", "Dark Salmon", "Alice Blue", "Honeydew", "Gray", "White", "Green"};
 
 public:
     Goat()
     {
         age = (rand() % 20) + 1;
-        name = names[rand() % 16];
-        color = colors[rand() % 16];
+        name = names[rand() % 15];
+        color = colors[rand() % 15];
     }
     Goat(int a, string n, string c)
     {
@@ -134,7 +134,12 @@ public:
 
     void print() {
         Node* current = head;
-        if (!current) return;
+        if (!current)
+        {
+           cout << "List is empty.";
+           return;
+        }
+
         while (current) {
             cout << current->goat->getName() << " (" << current->goat->getColor() << ", " << current->goat->getAge() << ")" << endl;
             current = current->next;
@@ -144,7 +149,12 @@ public:
 
     void print_reverse() {
         Node* current = tail;
-        if (!current) return;
+        if (!current)
+        {
+           cout << "List is empty.";
+           return;
+        }
+
         while (current) {
             cout << current->goat->getName() << " (" << current->goat->getColor() << ", " << current->goat->getAge() << ")" << endl;
             current = current->prev;
@@ -170,14 +180,14 @@ int main() {
 
     for (int i = 0; i < size; ++i)
     {
-        Goat temp();
+        Goat *temp = new Goat;
         list.push_back(temp);
     }
 
-    cout << "List forward: ";
+    cout << "Forward: ";
     list.print();
 
-    cout << "List backward: ";
+    cout << "Backward: ";
     list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
