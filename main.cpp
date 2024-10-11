@@ -10,26 +10,34 @@ private:
     int age;
     string name;
     string color;
-    string names[] = {Kelsie, Reagan, Triston, Raphael, Noel, Sullivan, Imani,
-        Daniella, Katrina, Alexis, Brenda, Alberto, Sasha, Ally, Journey};
-    string colors[] = {Snow, Coral, Bisque, Moccasin, Lavender, Peru, Azure, Amethyst
-        Tan, Dark Salmon, Alice Blue, Honeydew};
+    string names[15] = {"Kelsie", "Reagan", "Triston", "Raphael", "Noel", "Sullivan", "Imani",
+        "Daniella", "Katrina", "Alexis", "Brenda", "Alberto", "Sasha", "Ally", "Journey"};
+    string colors[15] = {"Snow", "Coral", "Bisque", "Moccasin", "Lavender", "Peru", "Azure", "Amethyst",
+        "Tan", "Dark Salmon", "Alice Blue", "Honeydew"};
 
 public:
     Goat()
     {
         age = (rand() % 20) + 1;
+        name = names[rand() % 16];
+        color = colors[rand() % 16];
+    }
+    Goat(int a, string n, string c)
+    {
+        age = a;
+        name = n;
+        color = c;
     }
 };
 
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        Goat* goat;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val;
+        Node(Goat *g, Node* p = nullptr, Node* n = nullptr) {
+            goat = g;
             prev = p;
             next = n;
         }
@@ -42,8 +50,8 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void push_back(int value) {
-        Node* newNode = new Node(value);
+    void push_back(Goat *g) {
+        Node* newNode = new Node(g);
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
         else {
@@ -53,8 +61,8 @@ public:
         }
     }
 
-    void push_front(int value) {
-        Node* newNode = new Node(value);
+    void push_front(Goat *g) {
+        Node* newNode = new Node(g);
         if (!head)  // if there's no head, the list is empty
             head = tail = newNode;
         else {
@@ -64,13 +72,13 @@ public:
         }
     }
 
-    void insert_after(int value, int position) {
+    void insert_after(Goat *g, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
         }
 
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(g);
         if (!head) {
             head = tail = newNode;
             return;
@@ -95,11 +103,11 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(int value) {
+    void delete_node(string name) {
         if (!head) return; // Empty list
 
         Node* temp = head;
-        while (temp && temp->data != value)
+        while (temp && temp->goat->name != na)
             temp = temp->next;
 
         if (!temp) return; // Value not found
