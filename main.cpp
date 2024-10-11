@@ -112,7 +112,7 @@ public:
         if (!head) return; // Empty list
 
         Node* temp = head;
-        while (temp && !name.compare(temp->goat->getName()))
+        while (temp && name.compare(temp->goat->getName()))
             temp = temp->next;
 
         if (!temp) return; // Value not found
@@ -189,12 +189,6 @@ int main() {
 
     cout << "Backward: " << endl;
     list.print_reverse();
-
-    string name;
-    cout << "Which sheep would you like to remove from the list: ";
-    cin >> name;
-    list.delete_node(name);
-    list.print();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
