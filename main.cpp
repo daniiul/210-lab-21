@@ -1,7 +1,26 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+
+class Goat
+{
+private:
+    int age;
+    string name;
+    string color;
+    string names[] = {Kelsie, Reagan, Triston, Raphael, Noel, Sullivan, Imani,
+        Daniella, Katrina, Alexis, Brenda, Alberto, Sasha, Ally, Journey};
+    string colors[] = {Snow, Coral, Bisque, Moccasin, Lavender, Peru, Azure, Amethyst
+        Tan, Dark Salmon, Alice Blue, Honeydew};
+
+public:
+    Goat()
+    {
+        age = (rand() % 20) + 1;
+    }
+};
 
 class DoublyLinkedList {
 private:
@@ -10,7 +29,7 @@ private:
         Node* prev;
         Node* next;
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
+            data = val;
             prev = p;
             next = n;
         }
