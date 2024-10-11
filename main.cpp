@@ -1,3 +1,5 @@
+// COMSC-210 | Lab 21 | Daniil Malakhov
+// IDE used: Codeblocks
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -30,9 +32,13 @@ public:
         color = c;
     }
 
+    //setters and getters for Goat
     int getAge() { return age; }
     string getName() { return name; }
     string getColor() { return color; }
+    void setAge(int a) { age = a;}
+    void setName(string n) { name = n; }
+    void setColor(string c) { color = c; }
 };
 
 class DoublyLinkedList {
@@ -192,7 +198,6 @@ int main() {
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
-    cout << "List forward: ";
     list.print();
 
     return 0;
