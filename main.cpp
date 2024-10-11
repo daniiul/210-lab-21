@@ -141,7 +141,7 @@ public:
         }
 
         while (current) {
-            cout << current->goat->getName() << " (" << current->goat->getColor() << ", " << current->goat->getAge() << ")" << endl;
+            cout << "      " << current->goat->getName() << " (" << current->goat->getColor() << ", " << current->goat->getAge() << ")" << endl;
             current = current->next;
         }
         cout << endl;
@@ -156,7 +156,7 @@ public:
         }
 
         while (current) {
-            cout << current->goat->getName() << " (" << current->goat->getColor() << ", " << current->goat->getAge() << ")" << endl;
+            cout << "      " << current->goat->getName() << " (" << current->goat->getColor() << ", " << current->goat->getAge() << ")" << endl;
             current = current->prev;
         }
         cout << endl;
@@ -184,11 +184,17 @@ int main() {
         list.push_back(temp);
     }
 
-    cout << "Forward: ";
+    cout << "Forward: " << endl;
     list.print();
 
-    cout << "Backward: ";
+    cout << "Backward: " << endl;
     list.print_reverse();
+
+    string name;
+    cout << "Which sheep would you like to remove from the list: ";
+    cin >> name;
+    list.delete_node(name);
+    list.print();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
